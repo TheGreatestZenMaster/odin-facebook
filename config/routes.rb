@@ -7,5 +7,12 @@ Rails.application.routes.draw do
   get    '/contact', to: 'static_pages#contact'
   get    '/profile', to: 'static_pages#home'
   
-  resources :users, only: [:show, :new, :create, :edit, :show, :index]
+  resources :users, only: [:show, :new, :create, :edit, :show, :index] do
+    resources :posts
+  end
+  resources :posts do
+    resources :comments
+  end
+  
+  
 end

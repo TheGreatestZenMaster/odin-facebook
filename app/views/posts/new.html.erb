@@ -1,0 +1,12 @@
+<% fullname = "#{current_user.first_name}" + " #{current_user.last_name}" %>
+<% provide(:title, "New Post for #{fullname}") %>
+<h1>New Post for <%= fullname %>:</h1>
+
+
+<%= form_for @post do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    
+    <%= f.submit %>
+<% end %>
+
