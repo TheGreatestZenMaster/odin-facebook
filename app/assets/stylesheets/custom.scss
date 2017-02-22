@@ -292,6 +292,10 @@ span.picture {
 
 /* Comments */
 
+.comment-list {
+  overflow-x: hidden;
+}
+
 .comment-list .row {
   margin-bottom: 0px;
 }
@@ -365,6 +369,6 @@ span.picture {
   }
 }
 .comment-list .comment-post {
-  margin-top: 6px;
+      margin-top: 6px;
 }
 
