@@ -3,6 +3,6 @@
 
 
 <ul class="users">
-    <%= "#{@user.first_name}" "#{@user.last_name}" %>
+    <%= link_to "#{@user.first_name} #{@user.last_name}'s Posts", user_posts_path(@user) %>
 </ul>
 

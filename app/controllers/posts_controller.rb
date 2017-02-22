@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     
     def index
         @user = User.find(params[:user_id])
-        @posts = @user.posts.all
+        @posts = @user.posts.paginate(page: params[:page])
     end
     
     

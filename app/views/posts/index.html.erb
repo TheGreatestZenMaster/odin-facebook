@@ -2,12 +2,18 @@
 <% provide(:title, "All Posts for #{fullname}") %>
 <h1>All Posts for <%= fullname %>:</h1>
 
-
-<ul class="Posts">
-    <% @posts.each do |user_post| %>
-        <%= link_to user_post.id, user_post_path(@user, user_post) %><br>
-    <% end %>
-</ul>
+<div class="none">
+    <ol class="miniposts">
+        <% if @posts.any? %>
+            <% @posts.each do |user_post| %>
+                <li><%= render partial: 'posts/mini_post', locals: {mini_post: user_post} %></li>
+            <% end %>
+            <%= will_paginate @posts %>
+        <% end %>
+    </ol>
+</div>
 
 <%= link_to "New Post", new_user_post_path(@user) %><br>
 
+
+      

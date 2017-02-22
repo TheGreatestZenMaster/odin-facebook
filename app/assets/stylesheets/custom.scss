@@ -239,7 +239,11 @@ input {
 }
 
 /* Microposts */
-.microposts {
+#miniposts {
+  text-align: center;
+}
+
+.miniposts {
   list-style: none;
   padding: 0;
   li {
@@ -363,3 +367,4 @@ span.picture {
 .comment-list .comment-post {
   margin-top: 6px;
 }
+

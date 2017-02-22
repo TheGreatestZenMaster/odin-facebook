@@ -1,0 +1,14 @@
+<li id="miniposts">
+    <%#= link_to gravatar_for(mini_post.author, size: 50), mini_post.user %>
+    <span class="user"><%= link_to "By #{mini_post.author.first_name}", mini_post.author %><br></span>
+    <span class="content">
+        <%= mini_post.content %>
+        <%#= image_tag mini_post.picture.url if mini_post.picture? %>
+    </span>
+    <span class="timestamp">
+        Posted <%= time_ago_in_words(mini_post.created_at) %> ago.
+        <% if current_user == (mini_post.author) %>
+            <%= link_to "delete", mini_post, method: :delete, data: { confirm: "You sure?" } %>
+        <% end %>
+    </span>
+</li>

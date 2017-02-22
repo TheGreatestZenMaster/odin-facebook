@@ -1,0 +1,15 @@
+<li id="user">
+    <% fullname = "#{user.first_name} #{user.last_name}" %>
+    <%#= link_to gravatar_for(mini_post.author, size: 50), mini_post.user %>
+    <span class="user"><%= link_to "#{fullname}'s Posts", user_posts_path(user) %><br></span>
+    <span class="content">
+        <%= pluralize(user.posts.count, "post") %>
+        <%#= image_tag mini_post.picture.url if mini_post.picture? %>
+    </span>
+    <span class="timestamp">
+        Joined <%= time_ago_in_words(user.created_at) %> ago.
+        <% if current_user == (user) %>
+            <%= link_to "delete account", user, method: :delete, data: { confirm: "You sure?" } %>
+        <% end %>
+    </span>
+</li>
