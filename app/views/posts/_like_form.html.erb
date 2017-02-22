@@ -1,0 +1,7 @@
+<div id="follow_form">
+    <% if @post.liked_by_user?(@user) %>
+        <%= render 'unlike' %>
+    <% else %>
+        <%= render 'like' %>
+    <% end %>
+</div>

@@ -10,10 +10,18 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show, :new, :create, :edit, :show, :index] do
     resources :posts
+    member do
+      get :liked_posts
+    end
   end
   resources :posts do
     resources :comments
+    member do
+      get :liked_by_useR
+    end
   end
+
+  resources :likes,  only: [:create, :destroy]
   
   
 end

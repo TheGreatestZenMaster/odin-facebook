@@ -1,9 +1,10 @@
 <li id="miniposts">
     <%#= link_to gravatar_for(mini_post.author, size: 50), mini_post.user %>
-    <span class="user"><%= link_to "By #{mini_post.author.first_name}", mini_post.author %><br></span>
+    <span class="user"><%= link_to "By #{mini_post.author.first_name}", mini_post.author %><br>
+    <%= link_to "Post", user_post_path(mini_post.author, mini_post) %></span>
     <span class="content">
-        <%= mini_post.content %>
-        <%#= image_tag mini_post.picture.url if mini_post.picture? %>
+        <%= mini_post.content %><br>
+        <%= pluralize(mini_post.likes.count, 'like') %>
     </span>
     <span class="timestamp">
         Posted <%= time_ago_in_words(mini_post.created_at) %> ago.
