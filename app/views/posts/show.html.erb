@@ -1,14 +1,34 @@
-<% fullname = "#{@user.first_name}" + " #{@user.last_name}" %>
-<% provide(:title, "Post for #{fullname}") %>
-<h1>Post <%= @post.id %> for <%= fullname %>:</h1>
-
-
-
-<%= @post.content %>
-<div id="like_form">
-  <%= render 'posts/like_form' %>
-</div>
 <div class="container">
+  <div class="row">
+    <div class="col-md-8">
+        <section class="comment-list">
+            <article class="row">
+                <div class="col-md-2 col-sm-2 hidden-xs">
+                  <figure class="thumbnail">
+                    <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
+                    <figcaption class="text-center"><%= @post.author.first_name %></figcaption>
+                  </figure>
+                </div>
+                <div class="col-md-10 col-sm-10">
+                  <div class="panel panel-default arrow left">
+                    <div class="panel-body">
+                      <header class="text-left">
+                        <time class="comment-date" datetime="#{comment.created_at}"><i class="fa fa-clock-o"></i> <%= @post.created_at %></time>
+                      </header>
+                      <div class="comment-post">
+                        <p><%= @post.content %></p>
+                      </div>
+                      <div id="like_form">
+                       <p class="text-right"> <%= render 'posts/like_form' %></p>
+                      </div>
+                      <%#= <a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a> %>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </section>
+        </div>
+    </div>
   <div class="row">
     <div class="col-md-8">
       <h2 class="page-header">Comments</h2>
@@ -43,3 +63,9 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
