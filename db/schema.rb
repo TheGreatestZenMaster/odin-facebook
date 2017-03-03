@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223025335) do
+ActiveRecord::Schema.define(version: 20170224044757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,21 @@ ActiveRecord::Schema.define(version: 20170223025335) do
     t.datetime "updated_at",             null: false
     t.index ["author_id"], name: "index_comments_on_author_id", using: :btree
     t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.boolean  "accepted",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true, using: :btree
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.boolean  "is_active",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "likes", force: :cascade do |t|
@@ -53,6 +68,27 @@ ActiveRecord::Schema.define(version: 20170223025335) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["author_id"], name: "index_posts_on_author_id", using: :btree
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "points"
+    t.string   "image"
+    t.integer  "game_id"
+    t.boolean  "answered",   default: false
+    t.integer  "grade"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["game_id"], name: "index_questions_on_game_id", using: :btree
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "score"
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_teams_on_game_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

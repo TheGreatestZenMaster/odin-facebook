@@ -12,4 +12,5 @@
             <%= link_to "delete account", user, method: :delete, data: { confirm: "You sure?" } %>
         <% end %>
     </span>
+    <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post, :class => "btn btn-primary" %>
 </li>

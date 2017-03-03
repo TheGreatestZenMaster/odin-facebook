@@ -1,0 +1,8 @@
+<%= @message %><br>
+<%= link_to "Notification from #{@from.first_name}", user_path(@from) %>
+<% if @friendship %>
+    <%= form_for :friendship, :url => friendship_path(@friendship), :method => :PATCH do |f| %>
+        <%= f.button "Accept", name: "button_action", value: "accept" %>
+        <%= f.button "Decline", name: "button_action", value: "decline" %>
+    <% end %>
+<% end %>

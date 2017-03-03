@@ -16,7 +16,19 @@ User.create!(first_name:  "Jake",
                password_confirmation: password)
 end
 
-# Microposts
+# Friendships
+user = User.first
+5.times do |x|
+    user2 = User.find(x + 2)
+    friendship = user2.friendships.create!(friend_id: user.id, accepted: true)
+end
+3.times do |x|
+    user2 = User.find(x + 7)
+    friendship = user2.friendships.create!(friend_id: user.id)
+    friendship.create_notification!(notify_id: user.id, notify_from_id: user2.id)
+end
+
+# Posts
 users = User.order(:created_at).take(6)
 50.times do
     content = Faker::Lorem.sentence(15)

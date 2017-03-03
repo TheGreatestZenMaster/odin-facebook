@@ -1,0 +1,4 @@
+<%= @user.friends.count %>
+<% @user.friends.each do |friend| %>
+    <%= link_to "#{friend.first_name} #{friend.last_name}", profile_user_path(friend) %><br>
+<% end %>

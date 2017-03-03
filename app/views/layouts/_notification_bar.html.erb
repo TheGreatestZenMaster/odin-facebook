@@ -1,7 +1,0 @@
-<% if current_user %>
-    <% if current_user.recieved_notifications.any? %>
-        <% current_user.recieved_notifications.each do |notification| %>
-            <%= render partial: 'layouts/notification', locals: {notification: notification} %>
-        <% end %>
-    <% end %>
-<% end %>

@@ -6,3 +6,21 @@
     <%= link_to "#{@user.first_name} #{@user.last_name}'s Posts", user_posts_path(@user) %>
 </ul>
 
+<h2>Friends</h2>
+<ul>
+  <% @user.friendships.each do |friendship| %>
+    <li>
+      <%= friendship.friend.first_name %>
+      (<%= link_to "remove", friendship, :method => :delete %>)
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Find Friends", users_path %></p>
+
+<h2>Friended by Users</h2>
+<ul>
+  <% @user.inverse_friends.each do |friend| %>
+    <li><%= friend.first_name %></li>
+  <% end %>
+</ul>
